@@ -24,7 +24,7 @@ app.register(fastifySession, {
 });
 
 app.register(require('fastify-cors'), {
-    origin: 'https://movie-plaza-1.vercel.app/',
+    origin: 'https://movie-plaza-1.vercel.app',
 
     credentials: 'same-origin',
     allowMethods:
