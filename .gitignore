@@ -3,8 +3,7 @@
 # dependencies
 /node_modules
 /.pnp
-/videos
-videos/
+
 .pnp.js
 /package-lock.json
 /front/package-lock.json
