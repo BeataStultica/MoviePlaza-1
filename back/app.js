@@ -12,9 +12,11 @@ const pgSession = require('connect-pg-simple')(fastifySession);
 
 app.register(fastifySession, {
     store: new pgSession({
-        conString:
-            'postgres://movieadmin1:movieadmin@localhost:5432/movieplaza',
-        tableName: 'session',
+        conObject: {
+            connectionString: process.env.DATABASE_URL,
+            ssl: { rejectUnauthorized: false },
+            tableName: 'session',
+        },
     }),
     cookieName: 'sessionId',
     secret: '1qwqwqwwhjehu2372e8ywhdhu92e8uids',
@@ -22,7 +24,7 @@ app.register(fastifySession, {
 });
 
 app.register(require('fastify-cors'), {
-    origin: 'http://localhost:3000',
+    origin: '*',
 
     credentials: 'same-origin',
     allowMethods:
