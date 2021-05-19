@@ -23,7 +23,7 @@ const Filmpage = () => {
         getLogin();
     });
     useEffect(() => {
-        fetch('https://movieplazaback.herokuapp.com/' + window.location.pathname)
+        fetch('https://movieplazaback.herokuapp.com' + window.location.pathname)
             .then((res) => res.json())
             .then((res) => {
                 setFilm(res);
@@ -52,7 +52,7 @@ const Filmpage = () => {
             userid: userId,
             filmid: Number(window.location.pathname.split('/')[2]),
         });
-        fetch('http://localhost:3001/commentadd', {
+        fetch('https://movieplazaback.herokuapp.com/commentadd', {
             method: 'post',
             body: JSON.stringify({
                 comments: com,
@@ -72,7 +72,7 @@ const Filmpage = () => {
             <div className="Filmpage">
                 <h1>{film.filmname}</h1>
                 <img
-                    src={'http://localhost:3001/images/' + film.filmimage}
+                    src={'https://movieplazaback.herokuapp.com/images/' + film.filmimage}
                     alt="titleImg"
                     className="titleImg"
                 ></img>
