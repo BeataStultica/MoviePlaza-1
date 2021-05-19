@@ -20,7 +20,12 @@ app.register(fastifySession, {
     }),
     cookieName: 'sessionId',
     secret: '1qwqwqwwhjehu2372e8ywhdhu92e8uids',
-    cookie: { secure: false, path: '/', maxAge: 7 * 24 * 60 * 60 * 1000 }, //срок дії cookie 7 днів, протокол http(secure: false)
+    cookie: {
+        secure: true,
+        SameSite: 'None',
+        path: '/',
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+    }, //срок дії cookie 7 днів, протокол http(secure: false)
 });
 
 app.register(require('fastify-cors'), {
