@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "heroku-prebuild": "cd back && npm install",
-    "start": "cd back && npm start",
+    "start": "cd back && node index.js",
     "test:front": "cd front && npm test",
     "test:back": "cd back && npm test",
     "test": "npm run test:front && npm run test:back",
