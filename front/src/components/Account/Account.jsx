@@ -35,6 +35,10 @@ function Account(params) {
         });
         fetch('https://movieplazaback.herokuapp.com/updateprofile', {
             method: 'post',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({
                 firstname: document.getElementById('name').value,
                 secondname: document.getElementById('surname').value,

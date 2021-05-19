@@ -23,6 +23,10 @@ const useForm = (callback, validate) => {
         if (window.location.pathname === '/login') {
             fetch('https://movieplazaback.herokuapp.com/login', {
                 method: 'post',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
                 withCredentials: true,
                 credentials: 'include',
                 body: JSON.stringify({
@@ -40,6 +44,10 @@ const useForm = (callback, validate) => {
         } else {
             fetch('https://movieplazaback.herokuapp.com/registration', {
                 method: 'post',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
                 withCredentials: true,
                 credentials: 'include',
                 body: JSON.stringify({
