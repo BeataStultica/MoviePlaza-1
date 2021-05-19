@@ -1,5 +1,6 @@
 function routes(fastify, opts, done) {
     fastify.get('/', (request, reply) => {
+        console.log(request.headers.cookie);
         if (!request.headers.cookie) {
             reply.send({ status: 'not_autorized' });
         }

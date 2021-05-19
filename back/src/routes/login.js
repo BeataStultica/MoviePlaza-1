@@ -9,6 +9,7 @@ function routes(fastify, opts, done) {
             request.session.authenticated = true;
             request.session.user = { name: username, id: user };
             request.sessionstorage = request.session;
+            request.setHeader('Set-Cookie', ['SameSite=None']);
             return { success: 'true' };
         } else {
             request.session.authenticated = false;
