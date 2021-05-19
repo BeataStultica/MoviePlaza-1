@@ -5,7 +5,7 @@ function Comment({ work }) {
     const [user, setUser] = useState({});
     //console.log(work);
     useEffect(() => {
-        fetch('http://localhost:3001/users/' + work.userid)
+        fetch('https://movieplazaback.herokuapp.com/users/' + work.userid)
             .then((res) => res.json())
             .then((res) => setUser(res));
     }, [work.userid]);
@@ -14,7 +14,7 @@ function Comment({ work }) {
             <div className={c.avatar}>
                 <img
                     className={c['avatar_img']}
-                    src={'http://localhost:3001/images/' + user.userimage}
+                    src={'https://movieplazaback.herokuapp.com/images/' + user.userimage}
                     alt={work.userid}
                 />
             </div>

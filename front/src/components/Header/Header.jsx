@@ -12,7 +12,7 @@ function Header() {
 
     useEffect(() => {
         const getLogin = async () => {
-            fetch('http://localhost:3001/', {
+            fetch('https://movieplazaback.herokuapp.com/', {
                 withCredentials: true,
                 credentials: 'include',
             })
@@ -24,7 +24,7 @@ function Header() {
         getLogin();
     });
     const logout = async () => {
-        const promise = await fetch('http://localhost:3001/logout', {
+        const promise = await fetch('https://movieplazaback.herokuapp.com/logout', {
             withCredentials: true,
             credentials: 'include',
         });

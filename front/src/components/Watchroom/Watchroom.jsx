@@ -11,13 +11,13 @@ const Watchroom = (params) => {
     const [videosource, setSource] = useState('');
     const [currSocket, setSocket] = useState();
     const search = (searchValue) => {
-        fetch(`http://localhost:3001/catalog?value=${searchValue}`)
+        fetch(`https://movieplazaback.herokuapp.com/catalog?value=${searchValue}`)
             .then((res) => res.json())
             .then((res) => setFilms(res))
             .then(console.log(films));
     };
     const watchnow = (filmname) => {
-        setSource(`http://localhost:3001/videos/${filmname}.mp4`);
+        setSource(`https://movieplazaback.herokuapp.com/videos/${filmname}.mp4`);
         document.getElementById('videoPlayer').load();
         currSocket.emit('change_src', filmname);
     };
@@ -30,7 +30,7 @@ const Watchroom = (params) => {
         let username = '';
         let seeked = false;
         let promiseUser = new Promise(function (resolve, reject) {
-            const user = fetch('http://localhost:3001/', {
+            const user = fetch('https://movieplazaback.herokuapp.com/', {
                 withCredentials: true,
                 credentials: 'include',
             }).then((res) => res.json());
@@ -59,7 +59,7 @@ const Watchroom = (params) => {
             console.log(`Client connected: ${socket.id}`);
         });
         socket.on('change_src', (src) => {
-            setSource(`http://localhost:3001/videos/${src}.mp4`);
+            setSource(`https://movieplazaback.herokuapp.com/videos/${src}.mp4`);
             document.getElementById('videoPlayer').load();
         });
         // send message to chat
@@ -195,7 +195,7 @@ const createMessage = (username, pict, text) => {
     const message_avatar_image = document.createElement('img');
     console.log(username);
     message_avatar_image.className = w['message-avatar__image'];
-    message_avatar_image.src = 'http://localhost:3001/images/' + pict;
+    message_avatar_image.src = 'https://movieplazaback.herokuapp.com/images/' + pict;
     message_avatar_image.alt = 'avatar';
     message_avatar.appendChild(message_avatar_image);
     message.appendChild(message_avatar);

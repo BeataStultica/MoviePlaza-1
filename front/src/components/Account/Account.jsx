@@ -33,7 +33,7 @@ function Account(params) {
             favourgenre: genre,
             login: isLogin,
         });
-        fetch('http://localhost:3001/updateprofile', {
+        fetch('https://movieplazaback.herokuapp.com/updateprofile', {
             method: 'post',
             body: JSON.stringify({
                 firstname: document.getElementById('name').value,
@@ -45,7 +45,7 @@ function Account(params) {
         });
     };
     useEffect(() => {
-        fetch('http://localhost:3001/', {
+        fetch('https://movieplazaback.herokuapp.com/', {
             withCredentials: true,
             credentials: 'include',
         })
@@ -54,7 +54,7 @@ function Account(params) {
                 setData(res.name);
             });
 
-        fetch('http://localhost:3001/profile/' + params.user)
+        fetch('https://movieplazaback.herokuapp.com/profile/' + params.user)
             .then((res) => res.json())
             .then((res) => {
                 setUser(res);
@@ -69,7 +69,7 @@ function Account(params) {
                         <img
                             className={a['profile-avatar__img']}
                             src={
-                                'http://localhost:3001/images/' + user.userimage
+                                'https://movieplazaback.herokuapp.com/images/' + user.userimage
                             }
                             alt="avatar"
                         />

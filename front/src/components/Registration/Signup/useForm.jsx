@@ -21,7 +21,7 @@ const useForm = (callback, validate) => {
 
     const handleSubmit = (e) => {
         if (window.location.pathname === '/login') {
-            fetch('http://localhost:3001/login', {
+            fetch('https://movieplazaback.herokuapp.com/login', {
                 method: 'post',
                 withCredentials: true,
                 credentials: 'include',
@@ -38,7 +38,7 @@ const useForm = (callback, validate) => {
                 }
             });
         } else {
-            fetch('http://localhost:3001/registration', {
+            fetch('https://movieplazaback.herokuapp.com/registration', {
                 method: 'post',
                 withCredentials: true,
                 credentials: 'include',

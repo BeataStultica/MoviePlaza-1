@@ -7,7 +7,7 @@ const Catalog = () => {
     const [films, setFilms] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3001/catalog')
+        fetch('https://movieplazaback.herokuapp.com/catalog')
             .then((res) => res.json())
             .then((res) => setFilms(res));
     }, []);
@@ -25,7 +25,7 @@ const Catalog = () => {
         rate_to = null
     ) => {
         fetch(
-            `http://localhost:3001/catalog?value=${searchValue}&genre=${genre}&yearfrom=${year_from}&yearto=${year_to}&lenfrom=${len_from}&lento=${len_to}&pricefrom=${price_from}&priceto=${price_to}&ratefrom=${rate_from}&rateto=${rate_to}`
+            `https://movieplazaback.herokuapp.com/catalog?value=${searchValue}&genre=${genre}&yearfrom=${year_from}&yearto=${year_to}&lenfrom=${len_from}&lento=${len_to}&pricefrom=${price_from}&priceto=${price_to}&ratefrom=${rate_from}&rateto=${rate_to}`
         )
             .then((res) => res.json())
             .then((res) => setFilms(res))

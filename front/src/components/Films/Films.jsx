@@ -16,7 +16,7 @@ function Films({ work, iswatchroom = false, watchnow }) {
                 <div className={f['item-picture']}>
                     <img
                         className={f['item-picture__img']}
-                        src={'http://localhost:3001/images/' + work.filmimage}
+                        src={'https://movieplazaback.herokuapp.com/images/' + work.filmimage}
                         alt={work.filmimage}
                     />
                 </div>

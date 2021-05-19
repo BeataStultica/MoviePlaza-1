@@ -11,7 +11,7 @@ const Filmpage = () => {
     const [comments, setComment] = useState([]);
     useEffect(() => {
         const getLogin = async () => {
-            fetch('http://localhost:3001/', {
+            fetch('https://movieplazaback.herokuapp.com/', {
                 withCredentials: true,
                 credentials: 'include',
             })
@@ -23,7 +23,7 @@ const Filmpage = () => {
         getLogin();
     });
     useEffect(() => {
-        fetch('http://localhost:3001' + window.location.pathname)
+        fetch('https://movieplazaback.herokuapp.com/' + window.location.pathname)
             .then((res) => res.json())
             .then((res) => {
                 setFilm(res);
@@ -31,7 +31,7 @@ const Filmpage = () => {
             });
 
         const getLogin = async () => {
-            fetch('http://localhost:3001/', {
+            fetch('https://movieplazaback.herokuapp.com/', {
                 withCredentials: true,
                 credentials: 'include',
             })
