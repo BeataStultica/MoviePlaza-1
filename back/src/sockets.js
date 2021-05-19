@@ -47,7 +47,7 @@ const joinuser = async (username, room, socket) => {
 const chat_message = async (message, socket, app) => {
     const user = await getCurrentUser(socket.id, pool);
     const user_data = await axios
-        .get('http://localhost:3001/profile/' + user.username)
+        .get('https://movieplazaback.herokuapp.com/profile/' + user.username)
         .then((res) => res.data);
     let picture = 'user.png';
 

@@ -6,7 +6,7 @@ import Films from './..//Films/Films';
 import w from './Watchroom.module.css';
 
 const Watchroom = (params) => {
-    const ENDPOINT = 'localhost:3001';
+    const ENDPOINT = 'https://movieplazaback.herokuapp.com';
     const [films, setFilms] = useState([]);
     const [videosource, setSource] = useState('');
     const [currSocket, setSocket] = useState();
