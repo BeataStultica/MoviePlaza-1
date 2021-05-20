@@ -13,7 +13,7 @@ const Filmpage = () => {
         const getLogin = async () => {
             fetch('https://movieplazaback.herokuapp.com/', {
                 withCredentials: true,
-                credentials: 'same-site',
+                credentials: 'include',
             })
                 .then((res) => res.json())
                 .then((res) => {
