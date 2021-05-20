@@ -22,7 +22,7 @@ app.register(fastifySession, {
     secret: '1qwqwqwwhjehu2372e8ywhdhu92e8uids',
     cookie: {
         secure: true,
-        SameSite: 'None',
+        sameSite: 'None',
         path: '/',
         maxAge: 7 * 24 * 60 * 60 * 1000,
     }, //срок дії cookie 7 днів, протокол http(secure: false)
