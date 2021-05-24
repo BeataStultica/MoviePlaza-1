@@ -6,6 +6,10 @@ beforeAll(async (done) => {
     await db.query('call DeleteUser($1)', ['jesttestnew1']);
     done();
 });
+afterAll(async (done) => {
+    await db.query('call DeleteUser($1)', ['jesttestnew1']);
+    done();
+});
 
 describe('User registration', () => {
     test('register new user', async (done) => {

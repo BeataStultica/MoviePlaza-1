@@ -7,7 +7,7 @@ beforeAll(async (done) => {
     await db.query('call DeleteUser($1)', ['jesttestnew1']);
     await db.query(
         'DELETE FROM "Comments" WHERE "FilmId"=$1 AND "UserId" = $2',
-        [2, 28]
+        [2, 4]
     );
     await db.query('CALL UpdateUserInfo($1, $2, $3, $4, $5)', [
         'Dmytro',
@@ -23,6 +23,18 @@ beforeEach(async (done) => {
     done();
 });
 afterAll(async (done) => {
+    await db.query('call DeleteUser($1)', ['jesttestnew1']);
+    await db.query(
+        'DELETE FROM "Comments" WHERE "FilmId"=$1 AND "UserId" = $2',
+        [2, 4]
+    );
+    await db.query('CALL UpdateUserInfo($1, $2, $3, $4, $5)', [
+        'Dmytro',
+        'Ukrainets',
+        '2002-02-08',
+        'Триллер',
+        'dukrainets',
+    ]);
     db.end();
     done();
 });
@@ -44,7 +56,7 @@ describe('routes test', () => {
         expect(res.headers['content-type']).toEqual('image/png');
         done();
     });
-    test('user image is awailable', async (done) => {
+    test('user image is unawailable', async (done) => {
         const res = await request(app.server).get('/images/undefined');
         expect(res.body).toBeDefined();
         expect(res.body.films).toEqual(undefined);
@@ -143,14 +155,14 @@ describe('routes test', () => {
         done();
     });
     test('user data is awailable', async (done) => {
-        const res = await request(app.server).get('/users/10');
+        const res = await request(app.server).get('/users/3');
         expect(res.statusCode).toEqual(200);
         expect(res.body).toBeDefined();
         expect(res.body).toHaveProperty('userid');
-        expect(res.body.userid).toEqual(10);
+        expect(res.body.userid).toEqual(3);
         expect(res.body).toHaveProperty('login');
-        expect(res.body.login).toEqual('test5');
-        expect(res.body.firstname).toEqual('successtest');
+        expect(res.body.login).toEqual('dukrainets');
+        expect(res.body.firstname).toEqual('Dmytro');
         done();
     });
     test('is no logined', async (done) => {
@@ -161,31 +173,7 @@ describe('routes test', () => {
         expect(res.body.status).toEqual('not_autorized');
         done();
     });
-    test('is logined', async (done) => {
-        const login = await request(app.server).post('/login').send({
-            username: 'dukrainets',
-            password: 'qwerty3',
-        });
-        const cookie = login.headers['set-cookie'][0].split(';')[0];
-        const res = await request(app.server).get('/').set('Cookie', cookie);
-        expect(res.statusCode).toEqual(200);
-        expect(res.body).toBeDefined();
-        expect(res.body).toHaveProperty('id');
-        expect(res.body.id).toEqual(3);
-        done();
-    });
-    test('logout', async (done) => {
-        const login = await request(app.server).post('/login').send({
-            username: 'dukrainets',
-            password: 'qwerty3',
-        });
-        const cookie = login.headers['set-cookie'][0].split(';')[0];
-        const res = await request(app.server)
-            .get('/logout')
-            .set('Cookie', cookie);
-        expect(res.statusCode).toEqual(302);
-        done();
-    });
+
     test('logout is already', async (done) => {
         const res = await request(app.server).get('/logout');
         expect(res.statusCode).toEqual(302);
@@ -195,7 +183,7 @@ describe('routes test', () => {
     test('POST add comment', async (done) => {
         const res = await request(app.server).post('/commentadd').send({
             comments: 'jesttest',
-            userid: 28,
+            userid: 4,
             filmid: 2,
         });
         expect(res.statusCode).toEqual(200);

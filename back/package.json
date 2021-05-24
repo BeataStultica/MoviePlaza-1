@@ -8,10 +8,10 @@
         "integration-test": "jest --forceExit --coverage --detectOpenHandles routes.test.js",
         "unit-test": "jest --forceExit --coverage --detectOpenHandles quer users.test.js",
         "start": "node index.js",
-        "lint": "eslint app.js src/",
-        "lint:fix": "eslint --fix app.js src/",
+        "lint": "eslint app.js index.js src/",
+        "lint:fix": "eslint --fix app.js index.js src/",
         "format": "prettier --write app.js package.json .eslintrc.json src/",
-        "check-format": "prettier --check app.js package.json .eslintrc.json src/"
+        "check-format": "prettier --check app.js index.js package.json .eslintrc.json src/"
     },
     "author": "",
     "license": "ISC",
@@ -23,6 +23,7 @@
     },
     "dependencies": {
         "axios": "^0.21.1",
+        "cloudinary": "^1.25.1",
         "connect-pg-simple": "^6.2.1",
         "eslint": "^7.21.0",
         "eslint-config-prettier": "^8.1.0",
