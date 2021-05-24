@@ -24,10 +24,13 @@ function Header() {
         getLogin();
     });
     const logout = async () => {
-        const promise = await fetch('https://movieplazaback.herokuapp.com/logout', {
-            withCredentials: true,
-            credentials: 'include',
-        });
+        const promise = await fetch(
+            'https://movieplazaback.herokuapp.com/logout',
+            {
+                withCredentials: true,
+                credentials: 'include',
+            }
+        );
         console.log(promise);
         window.location.reload();
     };

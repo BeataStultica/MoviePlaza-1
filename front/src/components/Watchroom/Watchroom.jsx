@@ -11,13 +11,17 @@ const Watchroom = (params) => {
     const [videosource, setSource] = useState('');
     const [currSocket, setSocket] = useState();
     const search = (searchValue) => {
-        fetch(`https://movieplazaback.herokuapp.com/catalog?value=${searchValue}`)
+        fetch(
+            `https://movieplazaback.herokuapp.com/catalog?value=${searchValue}`
+        )
             .then((res) => res.json())
             .then((res) => setFilms(res))
             .then(console.log(films));
     };
     const watchnow = (filmname) => {
-        setSource(`https://movieplazaback.herokuapp.com/videos/${filmname}.mp4`);
+        setSource(
+            `https://movieplazaback.herokuapp.com/videos/${filmname}.mp4`
+        );
         document.getElementById('videoPlayer').load();
         currSocket.emit('change_src', filmname);
     };
@@ -195,7 +199,8 @@ const createMessage = (username, pict, text) => {
     const message_avatar_image = document.createElement('img');
     console.log(username);
     message_avatar_image.className = w['message-avatar__image'];
-    message_avatar_image.src = 'https://movieplazaback.herokuapp.com/images/' + pict;
+    message_avatar_image.src =
+        'https://movieplazaback.herokuapp.com/images/' + pict;
     message_avatar_image.alt = 'avatar';
     message_avatar.appendChild(message_avatar_image);
     message.appendChild(message_avatar);

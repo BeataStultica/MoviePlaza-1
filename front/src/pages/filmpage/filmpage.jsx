@@ -55,8 +55,8 @@ const Filmpage = () => {
         fetch('https://movieplazaback.herokuapp.com/commentadd', {
             method: 'post',
             headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({
                 comments: com,
@@ -76,7 +76,10 @@ const Filmpage = () => {
             <div className="Filmpage">
                 <h1>{film.filmname}</h1>
                 <img
-                    src={'https://movieplazaback.herokuapp.com/images/' + film.filmimage}
+                    src={
+                        'https://movieplazaback.herokuapp.com/images/' +
+                        film.filmimage
+                    }
                     alt="titleImg"
                     className="titleImg"
                 ></img>

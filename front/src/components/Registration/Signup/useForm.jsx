@@ -24,8 +24,8 @@ const useForm = (callback, validate) => {
             fetch('https://movieplazaback.herokuapp.com/login', {
                 method: 'post',
                 headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
                 },
                 withCredentials: true,
                 credentials: 'include',
@@ -33,20 +33,25 @@ const useForm = (callback, validate) => {
                     username: e.target.username.value,
                     password: e.target.password.value,
                 }),
-            }).then((response) =>{ return response.json();}).then(function (response, request) {
-                console.log(response);
-                if (response.success === 'false') {
-                    alert('Неправильний логін або пароль');
-                } else {
-                    window.location.pathname = '/profile/' + values.username;
-                }
-            });
+            })
+                .then((response) => {
+                    return response.json();
+                })
+                .then(function (response, request) {
+                    console.log(response);
+                    if (response.success === 'false') {
+                        alert('Неправильний логін або пароль');
+                    } else {
+                        window.location.pathname =
+                            '/profile/' + values.username;
+                    }
+                });
         } else {
             fetch('https://movieplazaback.herokuapp.com/registration', {
                 method: 'post',
                 headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
                 },
                 withCredentials: true,
                 credentials: 'include',
@@ -57,17 +62,22 @@ const useForm = (callback, validate) => {
                     dateofbirthday: e.target.bdate.value,
                     password: e.target.password.value,
                 }),
-            }).then((response) =>{ return response.json();}).then(function (response) {
-                console.log(response);
-                if (response.success === 'false') {
-                    alert('Користувач вже існує');
-                } else {
-                    setIsSubmitting(true);
-                    e.preventDefault();
-                    setErrors(validate(values));
-                    window.location.pathname = '/profile/' + values.username;
-                }
-            });
+            })
+                .then((response) => {
+                    return response.json();
+                })
+                .then(function (response) {
+                    console.log(response);
+                    if (response.success === 'false') {
+                        alert('Користувач вже існує');
+                    } else {
+                        setIsSubmitting(true);
+                        e.preventDefault();
+                        setErrors(validate(values));
+                        window.location.pathname =
+                            '/profile/' + values.username;
+                    }
+                });
         }
 
         e.preventDefault();

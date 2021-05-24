@@ -14,7 +14,10 @@ function Comment({ work }) {
             <div className={c.avatar}>
                 <img
                     className={c['avatar_img']}
-                    src={'https://movieplazaback.herokuapp.com/images/' + user.userimage}
+                    src={
+                        'https://movieplazaback.herokuapp.com/images/' +
+                        user.userimage
+                    }
                     alt={work.userid}
                 />
             </div>

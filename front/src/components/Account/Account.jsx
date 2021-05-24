@@ -36,8 +36,8 @@ function Account(params) {
         fetch('https://movieplazaback.herokuapp.com/updateprofile', {
             method: 'post',
             headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({
                 firstname: document.getElementById('name').value,
@@ -73,7 +73,8 @@ function Account(params) {
                         <img
                             className={a['profile-avatar__img']}
                             src={
-                                'https://movieplazaback.herokuapp.com/images/' + user.userimage
+                                'https://movieplazaback.herokuapp.com/images/' +
+                                user.userimage
                             }
                             alt="avatar"
                         />
